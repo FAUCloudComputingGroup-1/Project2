@@ -7,7 +7,6 @@ import boto3
 
 app = Flask(__name__)
 
-#Make metadata table in Mongo DB
 HOST = 'localhost'
 PORT = 27017
 DB_NAME = 'myimagedb'
