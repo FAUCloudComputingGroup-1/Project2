@@ -34,13 +34,7 @@ background-color:#ADD8E6;
 }
 </style>
     """
-    s3_client = boto3.client('s3', aws_access_key_id='AKIAWZATVY7MB4BXAOIG', aws_secret_access_key= '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')
-    file_names = []
-    response = s3_client.list_objects_v2(Bucket="chefomardee-testing")
-    try:
-        for obj in response['Contents']:
-            file_names.append(obj['Key'])
-        print(file_names)
+    s3_clien
         for i in (file_names):
             s3_client.download_file("chefomardee-testing", i, './files2/'+i)  
         
