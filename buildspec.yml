@@ -18,6 +18,7 @@ phases:
       - echo Build started on `date`
   post_build:
     commands:
+      - docker -v
       - docker build -t whi .
       - docker tag whi $REPOSITORY_URI:$IMAGE_TAG
       - docker push public.ecr.aws/g8f8p7n1/chefomardee:whi
