@@ -28,6 +28,11 @@ def index():
 <button>Submit</button>
 </div>
 </form>
+<style>
+body{
+background-color:#ADD8E6;
+}
+</style>
     """
     s3_client = boto3.client('s3', aws_access_key_id='AKIAWZATVY7MB4BXAOIG', aws_secret_access_key= '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')
     file_names = []
