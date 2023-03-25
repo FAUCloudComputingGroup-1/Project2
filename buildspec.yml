@@ -7,10 +7,18 @@ phases:
   pre_build:
     commands:
       - python -m py_compile main.py
+      - aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/g8f8p7n1
+      - REPOSITORY_URI=public.ecr.aws/g8f8p7n1/chefomardee
+      - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
+      - IMAGE_TAG=whi
+
       - echo Nothing to do in the pre_build phase...
   build:
     commands:
       - echo Build started on `date`
+      - docker build -t whi .
+      - docker tag whi $REPOSITORY_URI:$IMAGE_TAG
   post_build:
     commands:
+      - docker push public.ecr.aws/g8f8p7n1/chefomardee:whi
       - echo Build completed on `date`
