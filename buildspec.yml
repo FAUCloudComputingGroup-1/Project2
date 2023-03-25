@@ -6,7 +6,7 @@ phases:
       python: 3.11.2
   pre_build:
     commands:
-      - COMMIT_HASH=$(python3 main.py)
+      - python -m py_compile main.py
       - echo Nothing to do in the pre_build phase...
   build:
     commands:
