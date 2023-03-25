@@ -1,27 +1,23 @@
 version: 0.2
 
 phases:
+  install:
+    runtime-versions:
+      python: 3.11.2
   pre_build:
     commands:
-      - echo Logging in to Amazon ECR...
-      - aws --version
-      - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin 012345678910.dkr.ecr.us-west-2.amazonaws.com
-      - REPOSITORY_URI=012345678910.dkr.ecr.us-west-2.amazonaws.com/hello-world
+      - python -m py_compile main.py
+      - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 466045224920.dkr.ecr.us-east-1.amazonaws.com
+      - REPOSITORY_URI=public.ecr.aws/g8f8p7n1/chefomardee
       - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
-      - IMAGE_TAG=${COMMIT_HASH:=latest}
+      - IMAGE_TAG=whi
+      - echo Nothing to do in the pre_build phrase...
   build:
     commands:
       - echo Build started on `date`
-      - echo Building the Docker image...
-      - docker build -t $REPOSITORY_URI:latest .
-      - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG
+      - docker build -t whi .
+      - docker tag whi $REPOSITORY_URI:$IMAGE_TAG
   post_build:
     commands:
+      - docker push public.ecr.aws/g8f8p7n1/chefomardee:whi
       - echo Build completed on `date`
-      - echo Pushing the Docker images...
-      - docker push $REPOSITORY_URI:latest
-      - docker push $REPOSITORY_URI:$IMAGE_TAG
-      - echo Writing image definitions file...
-      - printf '[{"name":"hello-world","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
-artifacts:
-    files: imagedefinitions.json
