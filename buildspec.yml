@@ -6,6 +6,7 @@ phases:
       python: 3.11.2
   pre_build:
     commands:
+      - pip install 
       - echo Nothing to do in the pre_build phase...
   build:
     commands:
