@@ -1,16 +1,53 @@
 version: 0.2
 
 phases:
-  install:
-    runtime-versions:
-      python: 3.11.2
   pre_build:
     commands:
-      - python -m py_compile main.py
-      - echo Nothing to do in the pre_build phase...
+      - echo Logging in to Amazon ECR...
+      - aws --version
+      - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin 012345678910.dkr.ecr.us-west-2.amazonaws.com
+      - REPOSITORY_URI=466045224920.dkr.ecr.us-east-1.amazonaws.com/chefomardee
+      - IMAGE_TAG=whit
+
   build:
     commands:
       - echo Build started on `date`
+      - echo Building the Docker image...
+      - docker build -t $REPOSITORY_URI:latest .
+      - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG
   post_build:
     commands:
       - echo Build completed on `date`
+      - echo Pushing the Docker images...
+      - docker push $REPOSITORY_URI:latest
+      - docker push $REPOSITORY_URI:$IMAGE_TAG
+      - echo Writing image definitions file...
+
+
+
+
+
+
+
+
+
+
+
+# WORKING CODE
+#vVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+# version: 0.2
+
+# phases:
+#   install:
+#     runtime-versions:
+#       python: 3.11.2
+#   pre_build:
+#     commands:
+#       - python -m py_compile main.py
+#       - echo Nothing to do in the pre_build phase...
+#   build:
+#     commands:
+#       - echo Build started on `date`
+#   post_build:
+#     commands:
+#       - echo Build completed on `date`
