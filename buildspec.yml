@@ -13,14 +13,14 @@ phases:
     commands:
       - echo Build started on `date`
       - echo Building the Docker image...
-      - docker build -t gre .
-      - docker tag gre public.ecr.aws/g8f8p7n1/chefomardee:gre
+      - docker build -t blu .
+      - docker tag blu public.ecr.aws/g8f8p7n1/chefomardee:blu
   post_build:
     commands:
       - echo Build completed on `date`
       - echo Pushing the Docker images...
       - docker push public.ecr.aws/g8f8p7n1/chefomardee:gre
-      - printf '[{"name":"green","imageUri":"%s"}]' public.ecr.aws/g8f8p7n1/chefomardee:gre > imagedefinitions.json
+      - printf '[{"name":"blue","imageUri":"%s"}]' public.ecr.aws/g8f8p7n1/chefomardee:blu > imagedefinitions.json
       - echo Writing image definitions file...
 artifacts:
   files: imagedefinitions.json
