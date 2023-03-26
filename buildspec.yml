@@ -5,7 +5,7 @@ phases:
     commands:
       - echo Logging in to Amazon ECR...
       - aws --version
-      - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin 012345678910.dkr.ecr.us-west-2.amazonaws.com
+      - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin 466045224920.dkr.ecr.us-east-1.amazonaws.com
       - REPOSITORY_URI=466045224920.dkr.ecr.us-east-1.amazonaws.com/chefomardee
       - IMAGE_TAG=whit
 
