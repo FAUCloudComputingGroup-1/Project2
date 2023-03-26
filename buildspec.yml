@@ -19,7 +19,7 @@ phases:
       - echo Build completed on `date`
       - echo Pushing the Docker images...
       - docker push public.ecr.aws/g8f8p7n1/chefomardee:whit
-      - printf '[{"name":"green","imageUri":"%s"}]' public.ecr.aws/g8f8p7n1/chefomardee:gre > imagedefinitions.json
+      - printf '[{"name":"whit","imageUri":"%s"}]' public.ecr.aws/g8f8p7n1/chefomardee:whit > imagedefinitions.json
       - echo Writing image definitions file...
 artifacts:
   files: imagedefinitions.json
