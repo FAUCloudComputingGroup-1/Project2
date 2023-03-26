@@ -3,7 +3,7 @@ version: 0.2
 phases:
   install:
     runtime-versions:
-      python: 3.10
+      python: 3.9
 
   pre_build:
     commands:
@@ -11,8 +11,6 @@ phases:
       - aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/g8f8p7n1
       - REPOSITORY_URI=public.ecr.aws/g8f8p7n1/chefomardee
       - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
-      - IMAGE_TAG=whi
-      - node -v
       - echo Nothing to do in the pre_build phrase...
   build:
     commands:
@@ -20,5 +18,5 @@ phases:
   post_build:
     commands:
       - docker -v
-      - docker build -t chefomardee:white .
+      - docker build -t chef .
       - echo Build completed on `date`
