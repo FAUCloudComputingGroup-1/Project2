@@ -77,7 +77,7 @@ def list_files():
             jpegs.append(file)
     # print(jpegs)
     return files
-
+# test
 
 @app.route('/files2/<filename>')
 def get_file(filename):
