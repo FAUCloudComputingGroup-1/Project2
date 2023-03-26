@@ -30,7 +30,7 @@ def index():
 </form>
 <style>
 body{
-background-color:##87A96B;
+background-color:#87A96B;
 }
 </style>
     """
