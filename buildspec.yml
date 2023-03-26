@@ -19,7 +19,7 @@ phases:
       - echo Build completed on `date`
       - echo Pushing the Docker images...
       - docker push public.ecr.aws/g8f8p7n1/chefomardee:whit
-      - printf '[{"name":"chef-service-5-green","imageUri":"%s"}]' 466045224920.dkr.ecr.us-east-1.amazonaws.com/chefomardee:whit > imagedefinitions.json
+      - printf '[{"name":"arn:aws:ecs:us-east-1:466045224920:task/chefcluster/0e57f79a2ac0438b8e95ad481f30d6a1","imageUri":"%s"}]' 466045224920.dkr.ecr.us-east-1.amazonaws.com/chefomardee:whit > imagedefinitions.json
       - echo Writing image definitions file...
 artifacts:
   files: imagedefinitions.json
