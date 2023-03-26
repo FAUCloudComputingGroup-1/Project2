@@ -20,5 +20,5 @@ phases:
   post_build:
     commands:
       - docker -v
-      - docker build -t white .
+      - docker build -t chefomardee:white .
       - echo Build completed on `date`
