@@ -7,20 +7,18 @@ phases:
       - aws --version
       - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin 466045224920.dkr.ecr.us-east-1.amazonaws.com
       - REPOSITORY_URI=466045224920.dkr.ecr.us-east-1.amazonaws.com/chefomardee
-      - IMAGE_TAG=whit
 
   build:
     commands:
       - echo Build started on `date`
       - echo Building the Docker image...
-      - docker build -t $REPOSITORY_URI:latest .
-      - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG
+      - docker build -t whit .
+      - docker tag whit $REPOSITORY_URI:whit
   post_build:
     commands:
       - echo Build completed on `date`
       - echo Pushing the Docker images...
-      - docker push $REPOSITORY_URI:latest
-      - docker push $REPOSITORY_URI:$IMAGE_TAG
+      - docker push public.ecr.aws/g8f8p7n1/chefomardee:whit
       - echo Writing image definitions file...
 
 
