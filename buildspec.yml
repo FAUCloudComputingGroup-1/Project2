@@ -8,7 +8,7 @@ phases:
   pre_build:
     commands:
       - python -m py_compile main.py
-      - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 466045224920.dkr.ecr.us-east-1.amazonaws.com
+      - aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/g8f8p7n1
       - REPOSITORY_URI=public.ecr.aws/g8f8p7n1/chefomardee
       - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
       - IMAGE_TAG=whi
