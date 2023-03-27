@@ -21,7 +21,7 @@ def index():
     index_html = """
     <form method="post" enctype="multipart/form-data" action="/upload" method="post">
 <div>
-<label for="file">Choose a file to upload</label>
+<label for="file">Choose file to upload</label>
 <input type="file" id="file" name="form_file" accept="image/jpeg"/>
 </div>
 <div>
