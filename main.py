@@ -19,20 +19,38 @@ def securefilename(filename):
 @app.route('/')
 def index():
     index_html = """
-    <form method="post" enctype="multipart/form-data" action="/upload" method="post">
-<div>
-<label for="file">Choose file to upload</label>
-<input type="file" id="file" name="form_file" accept="image/jpeg"/>
-</div>
-<div>
-<button>Submit</button>
-</div>
-</form>
-<style>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Green</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  </head>
+  <body class="bg-light">
+    <div class="container">
+      <form method="post" enctype="multipart/form-data" action="/upload" method="post" class="mt-5">
+        <div class="form-group text-center">
+        <label for="file" class="font-weight-bold">Choose file to upload</label>
+        <div class="custom-file">
+    <input type="file" class="custom-file-input" id="file" name="form_file" accept="image/jpeg" style="opacity: 0;" />
+    <label class="custom-file-label" for="file" style="cursor: pointer;">Select file</label>
+        </div>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block mt-3">Submit</button>
+      </form>
+    </div>
+  </body>
+  <style>
+.btn-primary {
+  background-color: #006400; /* dark green */
+  border-color: #006400; /* dark green */
+}
 body{
 background-color:#87A96B;
 }
 </style>
+</html>
+
     """
     s3_client = boto3.client('s3', aws_access_key_id='AKIAWZATVY7MB4BXAOIG', aws_secret_access_key= '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')
     file_names = []
@@ -45,7 +63,7 @@ background-color:#87A96B;
             s3_client.download_file("chefomardee-testing", i, './files2/'+i)  
         
         for file in list_files():
-            index_html += "<li><a href=\"/files2/" + file + "\">" + file + "</a></li>"
+            index_html += "<center><div><a href=\"/files2/" + file + "\">" + file + "</a></div></center>"
 
         return index_html
     except:
