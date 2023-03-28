@@ -26,6 +26,7 @@ def index():
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   </head>
   <body class="bg-light">
+    <h1>Please Allow 15 seconds for image to fully upload before trying to access the image</h1>
     <div class="container">
       <form method="post" enctype="multipart/form-data" action="/upload" method="post" class="mt-5">
         <div class="form-group text-center">
