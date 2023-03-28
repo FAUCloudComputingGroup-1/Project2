@@ -41,8 +41,12 @@ def index():
     </div>
   </body>
   <style>
+.btn-primary {
+  background-color: #007FFF; /* dark blue */
+  border-color: #007FFF; /* dark green */
+}
 body{
-background-color:#6699CC;
+background-color:#72A0C1;
 }
 </style>
 </html>
@@ -52,6 +56,9 @@ background-color:#6699CC;
     file_names = []
     response = s3_client.list_objects_v2(Bucket="chefomardee-testing")
     try:
+        dir = './files2'
+        for f in os.listdir(dir):
+            os.remove(os.path.join(dir, f))
         for obj in response['Contents']:
             file_names.append(obj['Key'])
         print(file_names)
