@@ -32,7 +32,7 @@ def index():
         <div class="form-group text-center">
         <label for="file" class="font-weight-bold">Choose file to upload</label>
         <div class="custom-file">
-    <input type="file" class="custom-file-input" id="file" name="form_file" accept="image/jpeg" style="opacity: 0;" />
+    <input type="file" class="custom-file-input" id="file" name="form_file" accept="image/jpeg" />
     <label class="custom-file-label" for="file" style="cursor: pointer;">Select file</label>
         </div>
         </div>
@@ -47,6 +47,15 @@ def index():
 }
 body{
 background-color:#72A0C1;
+}
+input[type="file"]::-webkit-file-upload-button {
+  display: none;
+}
+input[type="file"]::-webkit-file-upload-button::before {
+  content: "No file selected";
+  display: inline-block;
+  text-align: center;
+  width: 100%;
 }
 </style>
 </html>
