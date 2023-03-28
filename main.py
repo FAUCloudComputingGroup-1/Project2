@@ -25,6 +25,7 @@ def index():
 <input type="file" id="file" name="form_file" accept="image/jpeg"/>
 </div>
 <div>
+<Button color="red"> Submit </Button>
 <button>Submit</button>
 </div>
 </form>
