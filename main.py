@@ -55,7 +55,7 @@ padding:0px;
     background-color: transparent;
     cursor: pointer;
     border-radius: 10px;
-    border-color: #87A96B;
+    border-color: #006400;
 
   }
 
