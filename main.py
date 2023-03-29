@@ -30,13 +30,12 @@ def index():
     <div class="container">
       <form method="post" enctype="multipart/form-data" action="/upload" method="post" class="mt-5">
         <div class="form-group text-center">
-        <label for="file" class="font-weight-bold">Choose file to upload</label>
+        <center><label for="file" class="font-weight-bold button-style" >Choose File</label></center>
         <div class="custom-file">
-    <input type="file" class="custom-file-input" id="file" name="form_file" accept="image/jpeg" style="opacity: 0;" />
-    <label class="custom-file-label" for="file" style="cursor: pointer;">Select file</label>
+    <center><input type="file" class="custom-file-input" id="file" name="form_file" accept="image/jpeg" /></center>
         </div>
         </div>
-        <button type="submit" class="btn btn-primary btn-block mt-3">Submit</button>
+        <button type="submit" class="btn btn-primary btn-block mt-3" style="width:50%; margin:0 auto;">Upload</button>
       </form>
     </div>
   </body>
@@ -45,9 +44,38 @@ def index():
   background-color: #007FFF; /* dark green */
   border-color: #007FFF; /* dark green */
 }
+input{
+margin:0px;
+padding:0px;
+}
+  .button-style {
+    display: inline-block;
+    padding: 0.5em 1em;
+    border: 2px solid #000;
+    background-color: transparent;
+    cursor: pointer;
+    border-radius: 10px;
+    border-color: #007FFF;
+
+  }
+
+#custom-file-input {
+  text-align: center;
+}
+input[type="file"]::-webkit-file-upload-button::before {
+  content: "No file selected";
+  display: inline-block;
+  text-align: center;
+  width: 100%;
+}
+input[type="file"]::-webkit-file-upload-button {
+  display: none;
+}
+input{
+padding-left:175px;
+}
 body{
 background-color:#72A0C1;
-}
 </style>
 </html>
 
